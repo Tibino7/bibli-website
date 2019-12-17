@@ -1,0 +1,13 @@
+{% if books_list %}
+    <ul>
+    {% for book in books_list %}
+        <li><a>
+            {{ book.title }}
+            {{ book.author_first_name }}
+            {{ book.author_last_name }}
+        </a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No books are available.</p>
+{% endif %}

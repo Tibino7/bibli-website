@@ -1,3 +1,6 @@
-django
-mysqlclient
-pillow
+django==1.11
+six
+django-autofixture
+django-template_debug
+django-debug_toolbar
+django-formtools

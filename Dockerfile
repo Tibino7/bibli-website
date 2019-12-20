@@ -1,17 +1,14 @@
-FROM python:3.8.0
+FROM python:3.6.0
 
-COPY . /opt/bibli/
+COPY . /opt/bibli-website/
 
-WORKDIR /opt/bibli
+WORKDIR /opt/bibli-website
 
-ENV MYSQL_HOST=172.17.0.3
-ENV MYSQL_PORT=3306
-
+RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-RUN python3 manage.py makemigrations app
-RUN python3 manage.py sqlmigrate app 0001
-RUN python3 manage.py migrate
+RUN python3 manage.py migrate --settings=demo.settings
+RUN python manage.py loaddata demo/fixtures/* --settings=demo.settings
 
 EXPOSE 8000
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python3", "manage.py", "runserver", "--settings=demo.settings", "0.0.0.0:8000"]

@@ -1,16 +1,17 @@
 FROM python:3.8.0
 
-COPY . /opt/bibli/
+COPY bibli /opt/bibli/
 
 WORKDIR /opt/bibli
 
 ENV MYSQL_HOST=172.17.0.3
 ENV MYSQL_PORT=3306
 
+RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-RUN python3 manage.py makemigrations app
-RUN python3 manage.py sqlmigrate app 0001
-RUN python3 manage.py migrate
+#RUN python3 manage.py makemigrations app
+#RUN python3 manage.py sqlmigrate app 0001
+#RUN python3 manage.py migrate
 
 EXPOSE 8000
 

@@ -14,10 +14,22 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'navbar.css'%}" rel="stylesheet">
+    <link href="{% static 'flag-icons/css/flag-icon.min.css'%}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b6575a32fa.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body class="text-center" style="background-color: #1d2124">
+
+<nav class="site-header sticky-top py-1">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="fas fa-book fa-2x py-2 d-none d-md-inline-block" href="#"></a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Bibliothèque</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Auteurs</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Ajouter un livre</a>
+    </div>
+</nav>
 
 <div class="container">
 
@@ -36,43 +48,65 @@
             </thead>
             <tbody>
             <tr>
-                <th scope="row"><a href="#exampleModalScrollable" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #80bdff">Le Seigneur des Anneaux</a></th>
+                <th scope="row"><a href="#exampleModalScrollable1" data-toggle="modal"
+                                   data-target="#exampleModalScrollable1" style="color: #CCCCCC">Le Seigneur des
+                    Anneaux</a></th>
                 <td>John Ronald Reuel Tolkien</td>
                 <td>Fantasy</td>
                 <td>1954</td>
-                <td>Italien</td>
+                <td><span class="flag-icon flag-icon-it"></span></td>
             </tr>
             <tr>
-                <th scope="row">Le Suicide Français</th>
+                <th scope="row"><a href="#exampleModalScrollable2" data-toggle="modal"
+                                   data-target="#exampleModalScrollable2" style="color: #CCCCCC">Le Suicide Français</a></th>
                 <td>Eric Zemmour</td>
                 <td>Essai</td>
                 <td>2017</td>
-                <td>Français</td>
+                <td><span class="flag-icon flag-icon-fr"></span></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<!-- Modals -->
+<div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color: #1d2124">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalScrollableTitle" style="color: #ffffff">Le Seigneur des Anneaux</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<div class="modal fade" id="exampleModalScrollable2" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>

@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Bibliothèque</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="text-center" style="background-color: #1d2124">
+
+<div class="container">
+
+    <<h1 class="display-4" style="color: #FFFFFF">Bibliothèque Thibaud et Eléonore Hulot</h1>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Année</th>
+                <th scope="col">Langue</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row"><a href="#exampleModalScrollable" data-toggle="modal" data-target="#exampleModalScrollable" style="color: #80bdff">Le Seigneur des Anneaux</a></th>
+                <td>John Ronald Reuel Tolkien</td>
+                <td>Fantasy</td>
+                <td>1954</td>
+                <td>Italien</td>
+            </tr>
+            <tr>
+                <th scope="row">Le Suicide Français</th>
+                <td>Eric Zemmour</td>
+                <td>Essai</td>
+                <td>2017</td>
+                <td>Français</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+
+</body>
+</html>
+

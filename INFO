@@ -1,4 +1,4 @@
-DOCKER_BUILD_OPTS =  --build-arg TAG=${TAG} # --no-cache
+DOCKER_BUILD_OPTS =  #--no-cache
 RUN_OPTS = -rm -i -d
 IMAGE_NAME = bibli-website
 TAG = 1.0

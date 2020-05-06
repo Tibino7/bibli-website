@@ -99,3 +99,7 @@
 .overflow-hidden {
     overflow: hidden;
 }
+
+.lalign {
+    text-align: left;
+}

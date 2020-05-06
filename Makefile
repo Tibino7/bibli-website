@@ -14,7 +14,7 @@ run:
 
 test:
 	docker cp bibli/books/templates/books/table.html bibli-website:/opt/bibli/books/templates/books/table.html
-	docker cp bibli/books/static/navbar.css bibli-website:/opt/bibli/books/static/navbar.css
+	docker cp bibli/books/static/css/navbar.css bibli-website:/opt/bibli/books/static/css/navbar.css
 
 release: build run
 

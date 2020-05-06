@@ -73,10 +73,9 @@ WSGI_APPLICATION = 'bibli.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'books',
         'USER': 'thulot',
         'PASSWORD': 'toto',
@@ -84,7 +83,6 @@ DATABASES = {
         'PORT': os.getenv('MYSQL_PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

@@ -12,21 +12,31 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'navbar.css'%}" rel="stylesheet">
-    <link href="{% static 'flag-icons/css/flag-icon.min.css'%}" rel="stylesheet">
+    <!-- Bootstrap core CSS and custom styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'flag-icons/css/flag-icon.min.css' %}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b6575a32fa.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        body {
+            background-image: url({% static 'images/background.jpg'%});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
 
 </head>
 
-<body class="text-center" style="background-color: #1d2124">
+<body class="text-center">
 
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
 
         <a class="py-2" href="#" aria-label="Product">
-            <img src="{% static 'images/icons8-alpha-50.png'%}" height="25" width="25">
+            <img src="{% static 'images/icons8-alpha-50.png' %}" height="25" width="25">
         </a>
         <a class="py-2 d-none d-md-inline-block" href="#">Bibliothèque</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Auteurs</a>
@@ -59,14 +69,6 @@
                 <td>1954</td>
                 <td><span class="flag-icon flag-icon-it"></span></td>
             </tr>
-            <tr>
-                <th scope="row"><a href="#exampleModalScrollable2" data-toggle="modal"
-                                   data-target="#exampleModalScrollable2" style="color: #CCCCCC">Le Suicide Français</a></th>
-                <td>Eric Zemmour</td>
-                <td>Essai</td>
-                <td>2017</td>
-                <td><span class="flag-icon flag-icon-fr"></span></td>
-            </tr>
             </tbody>
         </table>
     </div>
@@ -75,13 +77,23 @@
 <!-- Modals -->
 <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered modal-xl" role="document">
         <div class="modal-content" style="background-color: #1d2124">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollableTitle" style="color: #ffffff">Le Seigneur des Anneaux</h4>
-            </div>
             <div class="modal-body">
-                ...
+                <div class="container-fluid">
+                    <br>
+                    <h4 class="display-5" style="color: #FFFFFF">Le Seigneur des Anneaux</h4>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-2" style="background-color: #FFFFFF">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/51N9FQmY1jL._SX316_BO1,204,203,200_.jpg"
+                                 class="book-img">
+                        </div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-4 ml-auto">.col-md-4 .ml-auto</div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,29 +103,9 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModalScrollable2" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
-<script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 </html>

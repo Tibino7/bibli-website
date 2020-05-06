@@ -4,8 +4,8 @@ COPY bibli /opt/bibli/
 
 WORKDIR /opt/bibli
 
-ENV MYSQL_HOST=172.17.0.2
-ENV MYSQL_PORT=3306
+ENV POSTGRES_HOST=172.17.0.2
+ENV POSTGRES_PORT=5432
 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt

@@ -79,8 +79,8 @@ DATABASES = {
         'NAME': 'books',
         'USER': 'thulot',
         'PASSWORD': 'toto',
-        'HOST': os.getenv('MYSQL_HOST'),
-        'PORT': os.getenv('MYSQL_PORT'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT'),
     }
 }
 

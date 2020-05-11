@@ -6,6 +6,9 @@ WORKDIR /opt/bibli
 
 ENV POSTGRES_HOST=172.17.0.2
 ENV POSTGRES_PORT=5432
+ENV POSTGRES_DB=books
+ENV POSTGRES_USER=tibino7
+ENV POSTGRES_PWD=toto
 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt

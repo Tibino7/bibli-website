@@ -15,5 +15,5 @@ or:
 `docker build --build-opts <your-build-options> -t bibli-website:1.0 .`
 
 ### Status
-2020-05-11: Database schema done
+2020-05-11: Database schema done    
 2020-05-06: Front-End static structure of library page almost done. 

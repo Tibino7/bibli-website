@@ -16,7 +16,7 @@ isbnSrv:
   tag: 1.1.1
   port: 8080
   service:
-    name: bibli-isbn-service
+    name: bibli-isbn-manager
     type: ClusterIP
   replicas: 1
 

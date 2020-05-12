@@ -9,6 +9,7 @@ class Book(models.Model):
     language = models.CharField(max_length=15)
     publisher = models.CharField(max_length=20)
     description = models.CharField(max_length=2000)
+    cover = models.CharField(max_length=250)
 
 class AuthorBooks(models.Model):
     id = models.IntegerField

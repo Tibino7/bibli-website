@@ -2,15 +2,11 @@
 
 The purpose of this project is to deploy a complete library orchestration website on top of a Kubernetes architecture. 
 
-### Prerequisites:
-A PostgreSQL database running, with database name, user and password matching with settings.py.    
-Example with docker:
-`docker run --name bibli-database  -e POSTGRES_DB=books -e POSTGRES_USER=tibino7 -e POSTGRES_PASSWORD=toto postgres:12.2 `
-
 ### Deployment
-####Docker
+#### Docker
 Prerequisites: 
-- have a running postgresql container 
+- have a running postgresql container, for example with:
+`docker run --name bibli-database  -e POSTGRES_DB=books -e POSTGRES_USER=tibino7 -e POSTGRES_PASSWORD=toto postgres:12.2 `
 - have a running isbnsrv container, using [xlcnd's isbnlib as a microservice](https://github.com/xlcnd/isbnsrv)    
 
 To deploy with docker:    
@@ -20,7 +16,7 @@ or:
 `docker build --build-opts <your-build-options> -t bibli-website:1.0 .`    
 `docker run --name <container-name> -p <port>:8000 bibli-website:1.0`
 
-####Kubernetes
+#### Kubernetes
 Prerequisites:
 - Kubernetes v1.7 or newer
 - Helm package manager (tested with helm v3)

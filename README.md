@@ -5,7 +5,7 @@ The purpose of this project is to deploy a complete library orchestration websit
 ### Deployment
 #### Docker
 Prerequisites: 
-- have a running postgresql container, for example with:
+- have a running postgresql container, for example with:    
 `docker run --name bibli-database  -e POSTGRES_DB=books -e POSTGRES_USER=tibino7 -e POSTGRES_PASSWORD=toto postgres:12.2 `
 - have a running isbnsrv container, using [xlcnd's isbnlib as a microservice](https://github.com/xlcnd/isbnsrv)    
 

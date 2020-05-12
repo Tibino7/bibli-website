@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.website.service.name }}
+  labels:
+    {{- include "bibli-website.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.website.service.type }}
+  ports:
+    - port: {{ .Values.website.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "bibli-website.selectorLabels" . | nindent 4 }}

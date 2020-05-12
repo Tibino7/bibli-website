@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.isbnSrv.service.name }}
+  labels:
+    {{- include "bibli-website.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.isbnSrv.replicas }}
+  selector:
+    matchLabels:
+      {{- include "bibli-website.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "bibli-website.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: bibli-isbn-service
+          image: "{{ .Values.isbnSrv.image }}:{{ .Values.isbnSrv.tag }}"
+          imagePullPolicy: {{ .Values.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.isbnSrv.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api/v1/isbns/9780375869020?fields=isbn13
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /api/v1/isbns/9780375869020?fields=isbn13
+              port: http

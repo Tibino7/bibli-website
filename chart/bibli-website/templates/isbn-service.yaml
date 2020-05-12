@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "bibli-website.fullname" . }}
+  name: {{ .Values.isbnSrv.service.name }}
   labels:
     {{- include "bibli-website.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.isbnSrv.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: {{ .Values.isbnSrv.port }}
       targetPort: http
       protocol: TCP
       name: http

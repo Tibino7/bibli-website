@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.website.service.name }}
+  labels:
+    {{- include "bibli-website.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.website.replicas }}
+  selector:
+    matchLabels:
+      {{- include "bibli-website.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "bibli-website.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: bibli-website
+          image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
+          imagePullPolicy: {{ .Values.pullPolicy }}
+          env:
+          - name: POSTGRES_HOST
+            value: "{{ .Values.postgresql.fullnameOverride }}"
+          - name: POSTGRES_PORT
+            value: "{{ .Values.postgresql.service.port }}"
+          - name: POSTGRES_DB
+            value: "{{ .Values.postgresql.postgresqlDatabase }}"
+          - name: POSTGRES_USER
+            value: "{{ .Values.postgresql.postgresqlUsername }}"
+          - name: POSTGRES_PWD
+            value: "{{ .Values.postgresql.postgresqlPassword }}"
+          - name: THIS_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: DJANGO_ALLOWED_HOSTS
+            value: "$(THIS_POD_IP)"
+          ports:
+            - name: http
+              containerPort: {{ .Values.website.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /admin/login
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /admin/login
+              port: http
+            initialDelaySeconds: 20
+            timeoutSeconds: 5

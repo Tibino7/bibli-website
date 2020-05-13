@@ -20,6 +20,7 @@ or:
 Prerequisites:
 - Kubernetes v1.7 or newer
 - Helm package manager (tested with helm v3)
+- Have local images of bibli-website (see above) and [xlcnd's isbnlib as a microservice](https://github.com/xlcnd/isbnsrv)    
 
 To deploy using helm package manager:    
 `cd chart`

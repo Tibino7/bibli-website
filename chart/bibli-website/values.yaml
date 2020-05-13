@@ -29,3 +29,6 @@ website:
     name: bibli-website
     type: ClusterIP
   replicas: 1
+  ingress:
+    enabled: true
+    host: bibli-website.local

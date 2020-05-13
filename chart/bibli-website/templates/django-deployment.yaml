@@ -34,7 +34,7 @@ spec:
               fieldRef:
                 fieldPath: status.podIP
           - name: DJANGO_ALLOWED_HOSTS
-            value: "$(THIS_POD_IP)"
+            value: "{{ .Values.website.ingress.host }}"
           ports:
             - name: http
               containerPort: {{ .Values.website.port }}

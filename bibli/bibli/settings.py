@@ -25,7 +25,7 @@ SECRET_KEY = 'ty(7ayoy80xx1sh0l_*a*=_adj^53r9!hdokz-8$c7!k%5g)ko'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', str(os.getenv('DJANGO_ALLOWED_HOSTS'))]
+ALLOWED_HOSTS = ['localhost', str(os.getenv('DJANGO_ALLOWED_HOSTS')), str(os.getenv('THIS _POD_IP'))]
 
 # Application definition
 

@@ -43,11 +43,11 @@ spec:
             httpGet:
               path: /admin/login
               port: http
-            initialDelaySeconds: 20
+            initialDelaySeconds: 15
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /admin/login
               port: http
-            initialDelaySeconds: 20
+            initialDelaySeconds: 5
             timeoutSeconds: 5

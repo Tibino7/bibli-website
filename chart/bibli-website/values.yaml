@@ -4,6 +4,7 @@ pullPolicy: IfNotPresent
 # POSTGRESQL DATABASE
 postgresql:
   fullnameOverride: bibli-database
+  createSecret: true
   postgresqlDatabase: books
   postgresqlUsername: tibino7
   postgresqlPassword: toto
@@ -32,3 +33,4 @@ website:
   ingress:
     enabled: true
     host: bibli-website.local
+  env:

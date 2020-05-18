@@ -14,6 +14,40 @@ spec:
       labels:
         {{- include "bibli-website.selectorLabels" . | nindent 8 }}
     spec:
+      initContainers:
+      - name: {{ .Values.website.service.name }}-init
+        image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: POSTGRES_DB
+            value: "{{ .Values.postgresql.postgresqlDatabase }}"
+          - name: POSTGRES_USER
+            value: "{{ .Values.postgresql.postgresqlUsername }}"
+          - name: POSTGRES_PWD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.postgresql.fullnameOverride }}
+                key: postgresql-password
+          - name: POSTGRES_HOST
+            value: "{{ .Values.postgresql.fullnameOverride }}"
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: THIS_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: DJANGO_ALLOWED_HOSTS
+            value: "{{ .Values.website.ingress.host }}"
+        command:
+        - /bin/bash
+        - -c
+        - sleep 15 &&
+          echo "Begin Migration ..." &&
+          python3 manage.py makemigrations books &&
+          python3 manage.py migrate &&
+          python3 manage.py createsuperuserauto --username tibino7 --password toto --preserve --no-input --email 'tibino7@github.com' &&
+          echo "Migration Completed" &&
+          sleep 10
       containers:
         - name: bibli-website
           image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
@@ -25,10 +59,13 @@ spec:
             value: "{{ .Values.postgresql.service.port }}"
           - name: POSTGRES_DB
             value: "{{ .Values.postgresql.postgresqlDatabase }}"
-          - name: POSTGRES_USER
+          - name: POSTGRES_USERNAME
             value: "{{ .Values.postgresql.postgresqlUsername }}"
-          - name: POSTGRES_PWD
-            value: "{{ .Values.postgresql.postgresqlPassword }}"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.postgresql.fullnameOverride }}
+                key: postgresql-password
           - name: THIS_POD_IP
             valueFrom:
               fieldRef:
@@ -41,13 +78,13 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /admin/login
+              path: /healthz
               port: http
             initialDelaySeconds: 15
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
-              path: /admin/login
+              path: /readiness
               port: http
-            initialDelaySeconds: 5
+            initialDelaySeconds: 20
             timeoutSeconds: 5

@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: {{ .Values.isbnSrv.service.name }}
   labels:
-    {{- include "bibli-website.labels" . | nindent 4 }}
+    {{- include "bibli-isbn-service.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.isbnSrv.replicas }}
   selector:
     matchLabels:
-      {{- include "bibli-website.selectorLabels" . | nindent 6 }}
+      {{- include "bibli-isbn-service.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "bibli-website.selectorLabels" . | nindent 8 }}
+        {{- include "bibli-isbn-service.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: bibli-isbn-service

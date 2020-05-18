@@ -3,11 +3,11 @@
 Expand the name of the chart.
 */}}
 {{- define "bibli-website.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
+{{- default .Chart.Name .Values.website.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "bibli-isbn-service.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
+{{- default .Values.isbnSrv.service.name .Values.isbnSrv.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
@@ -47,10 +47,24 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
+{{- define "bibli-isbn-service.labels" -}}
+helm.sh/chart: {{ include "bibli-website.chart" . }}
+{{ include "bibli-isbn-service.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end -}}
+
 {{/*
 Selector labels
 */}}
 {{- define "bibli-website.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "bibli-website.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
+
+{{- define "bibli-isbn-service.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "bibli-isbn-service.name" . }}
+app.kubernetes.io/instance: {{ include "bibli-isbn-service.name" . }}
 {{- end -}}

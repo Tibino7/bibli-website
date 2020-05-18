@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.isbnSrv.service.name }}
   labels:
-    {{- include "bibli-website.labels" . | nindent 4 }}
+    {{- include "bibli-isbn-service.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.isbnSrv.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "bibli-website.selectorLabels" . | nindent 4 }}
+    {{- include "bibli-isbn-service.selectorLabels" . | nindent 4 }}

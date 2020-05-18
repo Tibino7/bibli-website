@@ -13,7 +13,6 @@ ENV POSTGRES_PWD=toto
 RUN pip3 install --upgrade pip &&\
     pip3 install -r requirements.txt &&\
     python3 manage.py makemigrations books &&\
-    python3 manage.py sqlmigrate books 0001 &&\
     python3 manage.py migrate &&\
     python3 manage.py createsuperuserauto --username tibino7 --password toto --preserve --no-input --email 'tibino7@github.com'
 

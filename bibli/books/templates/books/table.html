@@ -79,6 +79,24 @@
                     <td>2000</td>
                     <td><span class="flag-icon flag-icon-it"></span></td>
                 </tr>
+                <!-- Dynamic loading of books in database -->
+                {% if books_list %}
+                    {% for book in books_list %}
+                <tr>
+                    <th scope="row" class="lalign">
+                        <a href="#exampleModalScrollable1" data-toggle="modal"
+                           data-target="#exampleModalScrollable1" style="color: #FFFFFF">{{ book.title }}</a>
+                    </th>
+                    <td class="lalign">
+                        <a href="#" style="color: #FFFFFF"><b>John Ronald Reuel Tolkien</b></a>
+                    </td>
+                    <td class="lalign">{{ book.genre }}</td>
+                    <td>{{ book.year }}</td>
+                    <td><span class="flag-icon flag-icon-{{ book.language }}"></span></td>
+                </tr>
+                    {% endfor %}
+                {% else %}
+                {% endif %}
                 </tbody>
             </table>
         </div>

@@ -1,8 +1,11 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
+
+from .models import Book
 
 def table(request):
-    return render(request, 'books/table.html')
+    books_list = Book.objects.order_by('genre')
+    context = {
+        'books_list': books_list,
+    }
+    return render(request, 'books/table.html', context)
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the books index.")

@@ -4,7 +4,7 @@ COPY bibli /opt/bibli/
 
 WORKDIR /opt/bibli
 
-ENV POSTGRES_HOST=172.17.0.5
+ENV POSTGRES_HOST=172.17.0.2
 ENV POSTGRES_PORT=5432
 ENV POSTGRES_DB=books
 ENV POSTGRES_USER=tibino7
@@ -14,7 +14,8 @@ RUN pip3 install --upgrade pip &&\
     pip3 install -r requirements.txt &&\
     python3 manage.py makemigrations books &&\
     python3 manage.py sqlmigrate books 0001 &&\
-    python3 manage.py migrate
+    python3 manage.py migrate &&\
+    python3 manage.py createsuperuserauto --username tibino7 --password toto --preserve --no-input --email 'tibino7@github.com'
 
 EXPOSE 8000
 

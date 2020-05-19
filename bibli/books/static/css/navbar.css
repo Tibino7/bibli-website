@@ -62,6 +62,10 @@
  * Extra utilities
  */
 
+.book-img {
+    border: none;
+}
+
 .flex-equal > * {
     -ms-flex: 1;
     flex: 1;

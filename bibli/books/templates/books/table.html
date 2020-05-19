@@ -67,33 +67,23 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row" class="lalign">
-                        <a href="#exampleModalScrollable1" data-toggle="modal"
-                           data-target="#exampleModalScrollable1" style="color: #FFFFFF">Il Silmarillion</a>
-                    </th>
-                    <td class="lalign">
-                        <a href="#" style="color: #FFFFFF"><b>John Ronald Reuel Tolkien</b></a>
-                    </td>
-                    <td class="lalign">Fantasy</td>
-                    <td>2000</td>
-                    <td><span class="flag-icon flag-icon-it"></span></td>
-                </tr>
                 <!-- Dynamic loading of books in database -->
                 {% if books_list %}
                     {% for book in books_list %}
-                <tr>
-                    <th scope="row" class="lalign">
-                        <a href="#exampleModalScrollable1" data-toggle="modal"
-                           data-target="#exampleModalScrollable1" style="color: #FFFFFF">{{ book.title }}</a>
-                    </th>
-                    <td class="lalign">
-                        <a href="#" style="color: #FFFFFF"><b>John Ronald Reuel Tolkien</b></a>
-                    </td>
-                    <td class="lalign">{{ book.genre }}</td>
-                    <td>{{ book.year }}</td>
-                    <td><span class="flag-icon flag-icon-{{ book.language }}"></span></td>
-                </tr>
+                        <tr>
+                            <th scope="row" class="lalign">
+                                <a data-toggle="modal" href="#"
+                                   data-target="#a{{ book.isbn13 }}" style="color: #FFFFFF">{{ book.title }}</a>
+                            </th>
+                            <td class="lalign">
+                                {% for author in book.authors.all %}
+                                    <a href="#" style="color: #FFFFFF"><b>{{ author }}</b></a>
+                                {% endfor %}
+                            </td>
+                            <td class="lalign">{{ book.genre }}</td>
+                            <td>{{ book.year }}</td>
+                            <td><span class="flag-icon flag-icon-{{ book.language }}"></span></td>
+                        </tr>
                     {% endfor %}
                 {% else %}
                 {% endif %}
@@ -104,96 +94,84 @@
 </div>
 
 <!-- Modals -->
-<div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered modal-xl" role="document">
-        <div class="modal-content" style="background-color: #1d2124">
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <button type="button" class="close" aria-label="Close" data-dismiss="modal">
-                        <span aria-hidden="true" style="color: #FFFFFF">&times;</span>
-                    </button>
-                    <br>
-                    <h4 class="display-4" style="color: #FFFFFF; font-family: Carolingia">
-                        Il Silmarillion
-                    </h4>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-3" style="align-content: center;">
-                            <img src="https://dbtitoli.giunti.it/api/media/image/getImage?cm=B00368&type=P"
-                                 class="book-img">
-                        </div>
-                        <div class="col-9">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-3" style="color:#FFFFFF; text-align: left;">
-                                        <h4>Auteurs:</h4>
-                                    </div>
-                                    <div class="col-9" style="color: #FFFFFF; text-align: left;">
-                                        <h4>John Ronald Reuel Tolkien</h4>
-                                    </div>
+{% if books_list %}
+    {% for book in books_list %}
+        <div class="modal fade" id="a{{ book.isbn13 }}" tabindex="-1" role="dialog"
+             aria-labelledby="a{{ book.isbn13 }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable mondal-dialog-centered modal-xl" role="document">
+                <div class="modal-content" style="background-color: #1d2124">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                                <span aria-hidden="true" style="color: #FFFFFF">&times;</span>
+                            </button>
+                            <br>
+                            <h4 class="display-3" style="color: #FFFFFF; font-family: Carolingia">
+                                {{ book.title }}
+                            </h4>
+                            <br>
+                            <div class="row">
+                                <div class="col-3" style="align-content: center;">
+                                    <img src="{{ book.cover }}" class="book-img">
                                 </div>
-                                <div class="row">
-                                    <div class="col-3" style="color:#FFFFFF; text-align: left;">
-                                        <h4>Editeur:</h4>
+                                <div class="col-9">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-3"
+                                                 style="color:#FFFFFF; text-align: left; font-family: Carolingia">
+                                                <h3>Auteurs:</h3>
+                                            </div>
+                                            <div class="col-9"
+                                                 style="color:#FFFFFF; text-align: left ; font-family: Carolingia">
+                                                {% for author in book.authors.all %}
+                                                    <h3>{{ author }}</h3>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-3"
+                                                 style="color:#FFFFFF; text-align: left; font-family: Carolingia">
+                                                <h3>Editeur:</h3>
+                                            </div>
+                                            <div class="col-9"
+                                                 style="color:#FFFFFF; text-align: left; font-family: Carolingia">
+                                                <h3>{{ book.publisher }}</h3>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <p style="color: #FFFFFF; text-align: left">
+                                                {{ book.description }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="col-9" style="color: #FFFFFF; text-align: left;">
-                                        <h4>Bompiani</h4>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <p style="color: #FFFFFF; text-align: left">
-                                        ''Il Silmarillion'', iniziato nel 1917 e rimasto incompiuto, rappresenta il
-                                        tronco
-                                        da cui si sono diramate tutte le successive opere narrative di Tolkien. Vi si
-                                        narrano gli eventi della Prima Era, alla quale di continuo si rifanno, come a un
-                                        necessario antecedente e a una chiave interpretativa, i personaggi e le
-                                        avventure
-                                        del ''Signore degli Anelli''. I tre Silmaril, nucleo simbolico della narrazione,
-                                        la
-                                        cui perdita e tentata riconquista costituiscono lo schema della vicenda, sono
-                                        gemme
-                                        tenute in altissimo conto dagli Elfi, ma concupite anche da Melkor-Morgoth,
-                                        primo
-                                        Signore Oscuro, perché contengono la Luce dei Due Alberi di Valinor distrutti
-                                        dall'avversario.
-                                        Vera e propria mitologia, ''Il Silmarillion'', che comprende cinque racconti
-                                        legati
-                                        come i capitoli di un'unica ''storia sacra'', narra la parabola di una caduta:
-                                        dalla
-                                        ''musica degl'inizi'', il momento cosmogonico, alla guerra, eroica quanto
-                                        disperata,
-                                        di Elfi e Uomini contro il Nemico. Un'opera unica nel suo genere, forse l'unico
-                                        tentativo compiuto in tempi recenti di costruire un vero e proprio edificio
-                                        mitico,
-                                        nel linguaggio, sublime e semplice insieme, che è proprio dell'antico epos.
-                                        Titolo originale: ''The Silmarillion'' (1977).
-                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4" style="color: #FFFFFF; text-align: center;">
-                            <h4>FANTASY</h4>
+                    <div class="container">
+                        <small><br></small>
+                        <hr class="mt-2" style="background-color: #636363 "/>
+                        <small><br></small>
+                        <div class="row">
+                            <div class="col-4" style="color: #FFFFFF; text-align: center; font-family: Carolingia">
+                                <h3>{{ book.genre }}</h3>
+                            </div>
+                            <div class="col-4" style="color: #FFFFFF; text-align: center; font-family: Carolingia">
+                                <h3>{{ book.year }}</h3>
+                            </div>
+                            <div class="col-4" style="text-align: center; align-content: center">
+                                <h3><span class="flag-icon flag-icon-{{ book.language }}"></span></h3>
+                            </div>
                         </div>
-                        <div class="col-4" style="color: #FFFFFF; text-align: center;">
-                            <h4>2000</h4>
-                        </div>
-                        <div class="col-4" style="color: #FFFFFF; text-align: center;">
-                            <h4><span class="flag-icon flag-icon-it"></span></h4>
-                        </div>
+                        <small><br></small>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    {% endfor %}
+{% else %}
+{% endif %}
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

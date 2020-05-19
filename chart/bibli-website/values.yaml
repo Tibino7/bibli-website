@@ -1,4 +1,4 @@
-# GOBAL
+# GLOBAL
 pullPolicy: IfNotPresent
 
 # POSTGRESQL DATABASE

@@ -4,6 +4,7 @@ pullPolicy: IfNotPresent
 # POSTGRESQL DATABASE
 postgresql:
   image:
+    registry: docker.io
     repository: postgresql
     tag: 11.7
   fullnameOverride: bibli-database

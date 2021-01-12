@@ -33,4 +33,5 @@ website:
   ingress:
     enabled: true
     host: bibli-website.local
+    ingressClassName: nginx
   env:

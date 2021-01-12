@@ -1,5 +1,9 @@
 {{- if .Values.website.ingress.enabled -}}
+{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
+{{ else }}
+apiVersion: extensions/v1beta1
+{{ end -}}
 kind: Ingress
 metadata:
   name: {{ .Values.website.service.name }}
@@ -10,6 +14,7 @@ metadata:
     nginx.ingress.kubernetes.io/default-backend: "{{ .Values.website.service.name }}"
     nginx.ingress.kubernetes.io/proxy-body-size: 15m
 spec:
+  ingressClassName: {{ .Values.website.ingress.ingressClassName }}
   rules:
   - host: {{ .Values.website.ingress.host }}
     http:

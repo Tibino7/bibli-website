@@ -3,6 +3,9 @@ pullPolicy: IfNotPresent
 
 # POSTGRESQL DATABASE
 postgresql:
+  image:
+    repository: postgresql
+    tag: 11.7
   fullnameOverride: bibli-database
   createSecret: true
   postgresqlDatabase: books

@@ -41,7 +41,7 @@ To deploy using helm package manager:
 `helm install -f bibli-website/values.yaml <release-name> bibli-website`
 
 ### Status
-2021-01-12: Docker images published on tibino7 dockerhub repository
+2021-01-12: Docker images published on tibino7 dockerhub repository    
 2020-05-12: Helm chart released    
 2020-05-11: Database schema done    
 2020-05-06: Front-End static structure of library page almost done. 

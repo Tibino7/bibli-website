@@ -5,7 +5,7 @@ pullPolicy: IfNotPresent
 postgresql:
   image:
     registry: docker.io
-    repository: postgresql
+    repository: postgres
     tag: 11.7
   fullnameOverride: bibli-database
   createSecret: true

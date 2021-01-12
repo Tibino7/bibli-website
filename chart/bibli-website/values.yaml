@@ -13,7 +13,7 @@ postgresql:
 
 # ISBN MICROSERVICE
 isbnSrv:
-  image: isbnsrv
+  image: tibino7/isbnsrv
   tag: 1.1.1
   port: 8080
   service:
@@ -23,7 +23,7 @@ isbnSrv:
 
 # DJANGO APP
 website:
-  image: bibli-website
+  image: tibino7/bibli-website
   tag: "1.0"
   port: 8000
   service:

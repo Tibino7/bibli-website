@@ -7,11 +7,11 @@ The purpose of this project is to deploy a complete library orchestration websit
 
 ##### From docker hub
 You can directly run this project using images from docker hub:
-For the database:
-`docker run --name bibli-database  -e POSTGRES_DB=books -e POSTGRES_USER=tibino7 -e POSTGRES_PASSWORD=toto postgres:12.2 `
-For the ISBN runtime:
-`docker run --name bibli-isbn-service tibino7/isbnsrv:1.1.1 `
-For the webapp:
+For the database:    
+`docker run --name bibli-database  -e POSTGRES_DB=books -e POSTGRES_USER=tibino7 -e POSTGRES_PASSWORD=toto postgres:12.2 `    
+For the ISBN runtime:    
+`docker run --name bibli-isbn-service tibino7/isbnsrv:1.1.1 `    
+For the webapp:    
 `docker run --name bibli-website -p 8080:8080 tibino7/bibli-website:1.0 `
 
 ##### Build locally

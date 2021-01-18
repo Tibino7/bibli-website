@@ -22,4 +22,8 @@ spec:
         backend:
           serviceName: {{ .Values.website.service.name }}
           servicePort: {{ .Values.website.port }}
+  tls:
+  - hosts:
+    - "{{ .Values.website.ingress.host }}"
+    secretName: {{ .Values.ingress.secret }}
   {{- end -}}

@@ -12,6 +12,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     nginx.ingress.kubernetes.io/default-backend: "{{ .Values.website.service.name }}"
     nginx.ingress.kubernetes.io/proxy-body-size: 15m
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: {{ .Values.website.ingress.ingressClassName }}
   rules:
@@ -25,5 +26,5 @@ spec:
   tls:
   - hosts:
     - "{{ .Values.website.ingress.host }}"
-    secretName: {{ .Values.ingress.secret }}
+    secretName: {{ .Values.website.ingress.secret }}
   {{- end -}}

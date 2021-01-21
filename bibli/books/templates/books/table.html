@@ -76,8 +76,8 @@
                                    data-target="#a{{ book.isbn13 }}" style="color: #FFFFFF">{{ book.title }}</a>
                             </th>
                             <td class="lalign">
-                                {% for author in book.authors.all %}
-                                    <a href="#" style="color: #FFFFFF"><b>{{ author }}</b></a>
+                                {% for author in book.authors %}
+                                    <a href="#" style="color: #FFFFFF"><b>{{ author.name }}</b></a>
                                 {% endfor %}
                             </td>
                             <td class="lalign">{{ book.genre }}</td>
@@ -123,8 +123,8 @@
                                             </div>
                                             <div class="col-9"
                                                  style="color:#FFFFFF; text-align: left ; font-family: Carolingia">
-                                                {% for author in book.authors.all %}
-                                                    <h3>{{ author }}</h3>
+                                                {% for author in book.authors %}
+                                                    <h3>{{ author.name }}</h3>
                                                 {% endfor %}
                                             </div>
                                         </div>

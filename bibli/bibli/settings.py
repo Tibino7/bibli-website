@@ -73,14 +73,14 @@ WSGI_APPLICATION = 'bibli.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PWD'),
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'PORT': os.getenv('POSTGRES_PORT'),
-        'OPTIONS': {
-            'connect_timeout': 3,
+        'ENGINE': 'djongo',
+        'NAME': os.getenv('MONGO_DB'),
+        'CLIENT': {
+            'host': 'mongodb://'+os.getenv('MONGO_HOST')+':'+os.getenv('MONGO_PORT'),
+            'username': os.getenv('MONGO_USER'),
+            'password': os.getenv('MONGO_PWD'),
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1',
         }
     }
 }

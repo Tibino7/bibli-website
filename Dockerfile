@@ -4,11 +4,11 @@ COPY bibli /opt/bibli/
 
 WORKDIR /opt/bibli
 
-ENV POSTGRES_HOST=172.17.0.3
-ENV POSTGRES_PORT=5432
-ENV POSTGRES_DB=books
-ENV POSTGRES_USER=tibino7
-ENV POSTGRES_PWD=toto
+ENV MONGO_HOST="172.17.0.2"
+ENV MONGO_PORT=27017
+ENV MONGO_DB=bibli_db
+ENV MONGO_USER=mongoadmin
+ENV MONGO_PWD=secret
 
 RUN pip3 install --upgrade pip &&\
     pip3 install -r requirements.txt &&\

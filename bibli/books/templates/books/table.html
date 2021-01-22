@@ -77,7 +77,11 @@
                             </th>
                             <td class="lalign">
                                 {% for author in book.authors %}
-                                    <a href="#" style="color: #FFFFFF"><b>{{ author.name }}</b></a>
+                                    {% if forloop.last %}
+                                    <a href="#" style="color: #FFFFFF"><b>{{ author }}</b></a>
+                                    {% else %}
+                                    <a href="#" style="color: #FFFFFF"><b>{{ author }},</b></a>
+                                    {%  endif %}
                                 {% endfor %}
                             </td>
                             <td class="lalign">{{ book.genre }}</td>
@@ -124,7 +128,7 @@
                                             <div class="col-9"
                                                  style="color:#FFFFFF; text-align: left ; font-family: Carolingia">
                                                 {% for author in book.authors %}
-                                                    <h3>{{ author.name }}</h3>
+                                                    <h3>{{ author }}</h3>
                                                 {% endfor %}
                                             </div>
                                         </div>

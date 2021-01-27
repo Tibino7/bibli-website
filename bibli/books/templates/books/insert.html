@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Bibliothèque</title>
+
+    <!-- Bootstrap core CSS and custom styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+    <link href="{% static 'css/flag-icons/css/flag-icon.min.css' %}" rel="stylesheet">
+
+
+    <style>
+        body {
+            background-image: url({% static 'images/background.jpg'%});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        @font-face {
+            font-family: 'Carolingia';
+            src: url('{% static 'fonts/carolingia.ttf' %}');
+        }
+    </style>
+
+</head>
+<body class="text-center" style="font-family: Candara, Serif">
+
+<div class="form-signin">
+    <div class="form-control">
+        <div class="form-group">
+            <h2 class="display-3" style="color: #222222; font-family: Carolingia, Helvetica">
+                Ajouter un livre
+            </h2>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="isbn13">ISBN 13</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                       aria-describedby="isbn13">
+                &emsp;
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="isbn10">ISBN 10</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                       aria-describedby="isbn10">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="source">Source</label>
+                </div>
+                <select class="custom-select" id="source">
+                    <option selected value="bnf">Bibliothèque Nationale de France</option>
+                    <option value="openl">Open Library</option>
+                    <option value="goob">Google Books</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="container">
+                        <a href="#" class="btn btn-warning btn-block">Continuer sans ISBN</a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="container">
+                        <button type="submit" class="btn btn-success btn-block">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

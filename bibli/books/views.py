@@ -9,3 +9,5 @@ def table(request):
     }
     return render(request, 'books/table.html', context)
 
+def insert(request):
+    return render(request, 'books/insert.html')

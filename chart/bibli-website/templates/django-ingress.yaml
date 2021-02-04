@@ -8,8 +8,8 @@ kind: Ingress
 metadata:
   name: {{ .Values.website.service.name }}
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/default-backend: "{{ .Values.website.service.name }}"
     nginx.ingress.kubernetes.io/proxy-body-size: 15m
     cert-manager.io/cluster-issuer: letsencrypt-prod

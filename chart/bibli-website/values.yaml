@@ -2,18 +2,18 @@
 pullPolicy: IfNotPresent
 
 # POSTGRESQL DATABASE
-postgresql:
+mongodb:
   image:
     registry: docker.io
-    repository: postgres
-    tag: 11.7
+    repository: mongo
+    tag: bionic
   fullnameOverride: bibli-database
   createSecret: true
-  postgresqlDatabase: books
-  postgresqlUsername: tibino7
-  postgresqlPassword: toto
+  mongodbDatabase: books
+  mongodbUsername: tibino7
+  mongodbPassword: toto
   service:
-    port: 5432
+    port: 27017
 
 # ISBN MICROSERVICE
 isbnSrv:

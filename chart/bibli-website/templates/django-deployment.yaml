@@ -19,19 +19,19 @@ spec:
         image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
         imagePullPolicy: IfNotPresent
         env:
-          - name: POSTGRES_DB
-            value: "{{ .Values.postgresql.postgresqlDatabase }}"
-          - name: POSTGRES_USER
-            value: "{{ .Values.postgresql.postgresqlUsername }}"
-          - name: POSTGRES_PWD
+          - name: MONGO_HOST
+            value: "{{ .Values.mongodb.fullnameOverride }}"
+          - name: MONGO_PORT
+            value: "{{ .Values.mongodb.service.port }}"
+          - name: MONGO_DB
+            value: "{{ .Values.mongodb.mongodbDatabase }}"
+          - name: MONGO_USER
+            value: "{{ .Values.mongodb.mongodbUsername }}"
+          - name: MONGO_PWD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.postgresql.fullnameOverride }}
-                key: postgresql-password
-          - name: POSTGRES_HOST
-            value: "{{ .Values.postgresql.fullnameOverride }}"
-          - name: POSTGRES_PORT
-            value: "5432"
+                name: {{ .Values.mongodb.fullnameOverride }}
+                key: mongodb-root-password
           - name: THIS_POD_IP
             valueFrom:
               fieldRef:
@@ -53,19 +53,19 @@ spec:
           image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
           imagePullPolicy: {{ .Values.pullPolicy }}
           env:
-          - name: POSTGRES_HOST
-            value: "{{ .Values.postgresql.fullnameOverride }}"
-          - name: POSTGRES_PORT
-            value: "{{ .Values.postgresql.service.port }}"
-          - name: POSTGRES_DB
-            value: "{{ .Values.postgresql.postgresqlDatabase }}"
-          - name: POSTGRES_USERNAME
-            value: "{{ .Values.postgresql.postgresqlUsername }}"
-          - name: POSTGRES_PASSWORD
+          - name: MONGO_HOST
+            value: "{{ .Values.mongodb.fullnameOverride }}"
+          - name: MONGO_PORT
+            value: "{{ .Values.mongodb.service.port }}"
+          - name: MONGO_DB
+            value: "{{ .Values.mongodb.mongodbDatabase }}"
+          - name: MONGO_USER
+            value: "{{ .Values.mongodb.mongodbPassword }}"
+          - name: MONGO_PWD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.postgresql.fullnameOverride }}
-                key: postgresql-password
+                name: {{ .Values.mongodb.fullnameOverride }}
+                key: mongodb-root-password
           - name: THIS_POD_IP
             valueFrom:
               fieldRef:

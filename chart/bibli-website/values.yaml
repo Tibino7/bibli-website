@@ -1,19 +1,23 @@
 # GLOBAL
-pullPolicy: IfNotPresent
+pullPolicy: Always
 
-# POSTGRESQL DATABASE
-mongodb:
+# MONGO DATABASE
+mongo:
   image:
-    registry: docker.io
     repository: mongo
     tag: bionic
   fullnameOverride: bibli-database
   createSecret: true
-  mongodbDatabase: books
-  mongodbUsername: tibino7
-  mongodbPassword: toto
+  auth:
+    username: username
+    password: password
+    database: testdb
   service:
+    name: bibli-database
     port: 27017
+    type: ClusterIP
+  persistence:
+    mountPath: /data/db
 
 # ISBN MICROSERVICE
 isbnSrv:

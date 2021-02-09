@@ -1,0 +1,15 @@
+# Source: mongodb/templates/svc-standalone.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.mongo.service.name }}
+  labels:
+    {{- include "bibli-database.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.website.service.type }}
+  ports:
+    - name: mongodb
+      port: {{ .Values.mongo.service.port }}
+      targetPort: mongodb
+  selector:
+    {{- include "bibli-database.selectorLabels" . | nindent 4 }}

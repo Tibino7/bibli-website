@@ -17,21 +17,21 @@ spec:
       initContainers:
       - name: {{ .Values.website.service.name }}-init
         image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: {{ .Values.pullPolicy }}
         env:
           - name: MONGO_HOST
-            value: "{{ .Values.mongodb.fullnameOverride }}"
+            value: "{{ .Values.mongo.fullnameOverride }}"
           - name: MONGO_PORT
-            value: "{{ .Values.mongodb.service.port }}"
+            value: "{{ .Values.mongo.service.port }}"
           - name: MONGO_DB
-            value: "{{ .Values.mongodb.mongodbDatabase }}"
+            value: "{{ .Values.mongo.auth.database }}"
           - name: MONGO_USER
-            value: "{{ .Values.mongodb.mongodbUsername }}"
+            value: "{{ .Values.mongo.auth.username }}"
           - name: MONGO_PWD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.mongodb.fullnameOverride }}
-                key: mongodb-root-password
+                name: {{ .Values.mongo.fullnameOverride }}
+                key: mongodb-password
           - name: THIS_POD_IP
             valueFrom:
               fieldRef:
@@ -54,17 +54,17 @@ spec:
           imagePullPolicy: {{ .Values.pullPolicy }}
           env:
           - name: MONGO_HOST
-            value: "{{ .Values.mongodb.fullnameOverride }}"
+            value: "{{ .Values.mongo.fullnameOverride }}"
           - name: MONGO_PORT
-            value: "{{ .Values.mongodb.service.port }}"
+            value: "{{ .Values.mongo.service.port }}"
           - name: MONGO_DB
-            value: "{{ .Values.mongodb.mongodbDatabase }}"
+            value: "{{ .Values.mongo.auth.database }}"
           - name: MONGO_USER
-            value: "{{ .Values.mongodb.mongodbPassword }}"
+            value: "{{ .Values.mongo.auth.username }}"
           - name: MONGO_PWD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.mongodb.fullnameOverride }}
+                name: {{ .Values.mongo.fullnameOverride }}
                 key: mongodb-root-password
           - name: THIS_POD_IP
             valueFrom:

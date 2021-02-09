@@ -10,6 +10,10 @@ Expand the name of the chart.
 {{- default .Values.isbnSrv.service.name .Values.isbnSrv.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
+{{- define "bibli-database.name" -}}
+{{- default .Values.mongo.service.name .Values.mongo.nameOverride | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
@@ -56,6 +60,15 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
+{{- define "bibli-database.labels" -}}
+helm.sh/chart: {{ include "bibli-website.chart" . }}
+{{ include "bibli-database.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end -}}
+
 {{/*
 Selector labels
 */}}
@@ -67,4 +80,9 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- define "bibli-isbn-service.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "bibli-isbn-service.name" . }}
 app.kubernetes.io/instance: {{ include "bibli-isbn-service.name" . }}
+{{- end -}}
+
+{{- define "bibli-database.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "bibli-database.name" . }}
+app.kubernetes.io/instance: {{ include "bibli-database.name" . }}
 {{- end -}}

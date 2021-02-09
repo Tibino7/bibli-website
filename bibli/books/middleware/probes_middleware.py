@@ -24,21 +24,6 @@ class HealthCheckMiddleware(object):
         return HttpResponse("OK")
 
     def readiness(self, request):
-        # Connect to each database and do a generic standard SQL query
-        # that doesn't write any data and doesn't depend on any tables
-        # being present.
-        try:
-            from django.db import connections
-            for name in connections:
-                cursor = connections[name].cursor()
-                cursor.execute("SELECT 1;")
-                row = cursor.fetchone()
-                if row is None:
-                    return HttpResponseServerError("db: invalid response")
-        except Exception as e:
-            logger.exception(e)
-            return HttpResponseServerError("db: cannot connect to database.")
-
         # Call get_stats() to connect to each memcached instance and get it's stats.
         # This can effectively check if each is online.
         try:

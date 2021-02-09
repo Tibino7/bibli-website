@@ -1,5 +1,5 @@
 DOCKER_BUILD_OPTS =  --no-cache
 RUN_OPTS = -rm -i -d
-IMAGE_NAME = bibli-website
+IMAGE_NAME = tibino7/bibli-website
 TAG = 1.0
 CONTAINER = bibli-website

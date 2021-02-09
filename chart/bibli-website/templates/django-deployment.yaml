@@ -65,7 +65,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: {{ .Values.mongo.fullnameOverride }}
-                key: mongodb-root-password
+                key: mongodb-password
           - name: THIS_POD_IP
             valueFrom:
               fieldRef:

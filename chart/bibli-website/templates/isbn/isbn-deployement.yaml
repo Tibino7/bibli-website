@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: bibli-isbn-service
-          image: "{{ .Values.isbnSrv.image }}:{{ .Values.isbnSrv.tag }}"
+          image: "{{ .Values.registry }}/{{ .Values.isbnSrv.image }}:{{ .Values.isbnSrv.tag }}"
           imagePullPolicy: {{ .Values.pullPolicy }}
           ports:
             - name: http

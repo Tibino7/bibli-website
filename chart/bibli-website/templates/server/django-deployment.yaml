@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
       - name: {{ .Values.website.service.name }}-init
-        image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
+        image: "{{ .Values.registry }}/{{ .Values.website.image }}:{{ .Values.website.tag }}"
         imagePullPolicy: {{ .Values.pullPolicy }}
         env:
           - name: MONGO_HOST
@@ -50,7 +50,7 @@ spec:
           sleep 10
       containers:
         - name: bibli-website
-          image: "{{ .Values.website.image }}:{{ .Values.website.tag }}"
+          image: "{{ .Values.registry }}/{{ .Values.website.image }}:{{ .Values.website.tag }}"
           imagePullPolicy: {{ .Values.pullPolicy }}
           env:
           - name: MONGO_HOST

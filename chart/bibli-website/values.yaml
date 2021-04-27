@@ -41,7 +41,7 @@ website:
   replicas: 1
   ingress:
     enabled: true
-    host: bibli-website.k3s.thulot.fr
+    host: bibli-website.your-domain.net
     ingressClassName: nginx
-    secret: bibli-website-k3s-net-tls
+    secret: bibli-website-domain-net-tls
   env:
